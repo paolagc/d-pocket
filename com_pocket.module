@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Code for the Pocket feature.
+ */
+
+include_once 'com_pocket.features.inc';
+
+/*
+* Implements hook_node_view()
+*/
+function com_pocket_node_view($node, $view_mode) {
+
+      // This goes to l(), which escapes !username in both title and attributes.
+      $links['pocket_save'] = array(
+        'title' => t("Read Later"),
+        'attributes' => array('title' => t("Read Later."),
+      );
+      $node->content['links']['postpone'] = array(
+        '#links' => $links,
+        '#attributes' => array('class' => array('links', 'inline')),
+      );
+}
