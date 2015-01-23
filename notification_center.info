@@ -1,7 +1,0 @@
-name = Notification center
-description = Notification center for the different user interactions
-core = 7.x
-package = Notification Center
-
-dependencies[] = views
-dependencies[] = flag
