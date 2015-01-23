@@ -1,0 +1,64 @@
+<?php
+
+public function createComment(){
+	$comment = new stdClass();
+
+	$node = $this->drupalCreateNode(array());
+
+	$comment->nid = $node->nid; // nid of a node you want to attach a comment to
+	$comment->cid = 0; // leave it as is
+	$comment->pid = 0; // parent comment id, 0 if none 
+	$comment->uid = 1; // user's id, who left the comment
+	$comment->mail = 'email@example.com'; // user's email
+	$comment->name =  $this->randomName(8); // If user is authenticated you can omit this field, it will be auto-populated, if the user is anonymous and you want to name him somehow, input his name here
+	$comment->thread = '01/'; // OPTIONAL. If you need comments to be threaded you can fill this value. Otherwise omit it.
+	$comment->created = time();
+	$comment->is_anonymous = 0; // leave it as is
+	$comment->status = COMMENT_PUBLISHED; // We auto-publish this comment
+	$comment->language = LANGUAGE_NONE; // The same as for a node
+	$comment->subject =  $this->randomString(8),; 
+	$comment->comment_body[$comment->language][0]['value'] =  $this->randomName(20);
+
+	comment_submit($comment); // saving a comment
+	comment_save($comment);
+
+	return $comment;
+}
+
+public function notificationOnNodeInsert(){
+
+	//should generate a notification
+	$node = $this->drupalCreateNode(array());
+
+	//shouldn't generate a notification
+	$node = $this->drupalCreateNode(array());
+}
+
+public function notificationOnNodeDelete(){
+
+	//should generate a notification
+	$node = $this->drupalCreateNode(array());
+
+	//should delete the notification previously create
+	node_delete($node->nid);
+}
+
+public function notificationOnCommentInsert(){
+
+	//should generate a notification
+	$comment = createComment();
+
+	
+
+	//shouldn't generate a notification
+	$comment = createComment();
+}
+
+public function notificationOnCommentDelete(){
+
+	//should generate a notification
+	$comment = createComment();
+
+	//should delete the notification previously create
+	comment_delete($comment->cid)
+}

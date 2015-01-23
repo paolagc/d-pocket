@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function demo_schema() {
+
+  $schema = array();
+
+  $schema['notification'] = array(
+    'description' => 'Notifications',
+    'fields' => array(
+
+      'nid' => array(
+        'description' => 'Notification ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'ulid' => array(
+        'description' => 'Trigger User ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'urid' => array(
+        'description' => 'Receiving User ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'date' => array(
+        'description' => 'Date.',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+
+      'type' => array(
+        'description' => 'Notification type',
+        'type' => 'varchar',
+        'length' => 20,
+      ),
+
+      'oid' => array(
+        'description' => 'Object receiving ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'otype' => array(
+        'description' => 'Object type.',
+        'type' => 'varchar',
+        'length' => 20,
+      ),
+
+      'primary key' => array('nid'),
+    ),
+  );
+
+  $schema['notification_status'] = array(
+    'description' => 'Notifications Status (seen/unseen)',
+	    'fields' => array(
+
+	      'nid' => array(
+	        'description' => 'Notification ID',
+	        'type' => 'serial',
+	        'unsigned' => TRUE,
+	        'not null' => TRUE,
+	      ),
+
+	      'status' => array(
+	        'description' => 'Notification status',
+	        'type' => 'int',
+	        'length' => 1,
+	        'default' => 0,
+	      ),
+	    )
+	);
+}
