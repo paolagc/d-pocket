@@ -104,11 +104,6 @@ function com_pocket_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Entityform Submission: User (field_suggest_user) */
-  $handler->display->display_options['relationships']['field_suggest_user_uid']['id'] = 'field_suggest_user_uid';
-  $handler->display->display_options['relationships']['field_suggest_user_uid']['table'] = 'field_data_field_suggest_user';
-  $handler->display->display_options['relationships']['field_suggest_user_uid']['field'] = 'field_suggest_user_uid';
-  $handler->display->display_options['relationships']['field_suggest_user_uid']['delta'] = '-1';
   /* Relationship: Entityform Submission: Content (field_suggested_content) */
   $handler->display->display_options['relationships']['field_suggested_content_nid']['id'] = 'field_suggested_content_nid';
   $handler->display->display_options['relationships']['field_suggested_content_nid']['table'] = 'field_data_field_suggested_content';
@@ -119,22 +114,28 @@ function com_pocket_views_default_views() {
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['relationship'] = 'field_suggested_content_nid';
+  /* Relationship: Entityform Submission: User sending (field_suggest_user_sending) */
+  $handler->display->display_options['relationships']['field_suggest_user_sending_uid']['id'] = 'field_suggest_user_sending_uid';
+  $handler->display->display_options['relationships']['field_suggest_user_sending_uid']['table'] = 'field_data_field_suggest_user_sending';
+  $handler->display->display_options['relationships']['field_suggest_user_sending_uid']['field'] = 'field_suggest_user_sending_uid';
+  $handler->display->display_options['relationships']['field_suggest_user_sending_uid']['delta'] = '-1';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'field_suggested_content_nid';
   /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'field_suggest_user_uid';
-  /* Field: User: Name */
   $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
   $handler->display->display_options['fields']['name_1']['table'] = 'users';
   $handler->display->display_options['fields']['name_1']['field'] = 'name';
   $handler->display->display_options['fields']['name_1']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name_1']['label'] = 'Author';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'field_suggest_user_sending_uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Suggested by';
   /* Sort criterion: Entityform Submission: Date submitted */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'entityform';

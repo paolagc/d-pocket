@@ -72,6 +72,46 @@ function com_pocket_field_default_field_bases() {
     'type' => 'user_reference',
   );
 
+  // Exported field_base: 'field_suggest_user_sending'
+  $field_bases['field_suggest_user_sending'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_suggest_user_sending',
+    'foreign keys' => array(
+      'uid' => array(
+        'columns' => array(
+          'uid' => 'uid',
+        ),
+        'table' => 'users',
+      ),
+    ),
+    'indexes' => array(
+      'uid' => array(
+        0 => 'uid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'user_reference',
+    'settings' => array(
+      'referenceable_roles' => array(
+        2 => 0,
+      ),
+      'referenceable_status' => array(
+        0 => 0,
+        1 => 1,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'user_reference',
+  );
+
   // Exported field_base: 'field_suggested_content'
   $field_bases['field_suggested_content'] = array(
     'active' => 1,
@@ -96,11 +136,11 @@ function com_pocket_field_default_field_bases() {
     'module' => 'node_reference',
     'settings' => array(
       'referenceable_types' => array(
-        'answer' => 0,
-        'event' => 0,
-        'gallery' => 0,
-        'question' => 0,
-        'slider' => 0,
+        'answer' => 'answer',
+        'event' => 'event',
+        'gallery' => 'gallery',
+        'question' => 'question',
+        'slider' => 'slider',
       ),
       'view' => array(
         'args' => array(),

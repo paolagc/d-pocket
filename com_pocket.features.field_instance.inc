@@ -22,7 +22,7 @@ function com_pocket_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'entityform',
@@ -56,7 +56,7 @@ function com_pocket_field_default_field_instances() {
         'module' => 'user_reference',
         'settings' => array(),
         'type' => 'user_reference_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'entityform',
@@ -78,6 +78,40 @@ function com_pocket_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'entityform-suggest_content-field_suggest_user_sending'
+  $field_instances['entityform-suggest_content-field_suggest_user_sending'] = array(
+    'bundle' => 'suggest_content',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_suggest_user_sending',
+    'label' => 'User sending',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'user_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'user_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'user_reference_autocomplete',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'entityform-suggest_content-field_suggested_content'
   $field_instances['entityform-suggest_content-field_suggested_content'] = array(
     'bundle' => 'suggest_content',
@@ -87,10 +121,9 @@ function com_pocket_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'node_reference_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -118,6 +151,7 @@ function com_pocket_field_default_field_instances() {
   t('Content');
   t('Message');
   t('User');
+  t('User sending');
 
   return $field_instances;
 }
